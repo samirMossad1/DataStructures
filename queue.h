@@ -33,7 +33,8 @@ typedef struct queueitem
 
 typedef struct queue
 {
-  int first;
+  int front;
+  int rear;
   QueueItem item[MAX_QUEUE];
 
 }Queue;
@@ -44,13 +45,13 @@ typedef struct queue
 
 void Queue_init(Queue*);
 
-void Queue_push(const QueueItem*,Queue*);
+void Queue_append(const QueueItem*,Queue*);
 
-void Queue_pop(QueueItem*,Queue*);
+void Queue_serve(QueueItem*,Queue*);
 
-void Queue_retrieveFirst(QueueItem*,const Queue*);
+void Queue_serveFirst(QueueItem*,const Queue*);
 
-void Queue_display(const Queue* , void (*ptr)(QueueItem*));
+void Queue_traverse(const Queue* , void (*ptr)(QueueItem*));
 
 void Queue_Clear(Queue*);
 
