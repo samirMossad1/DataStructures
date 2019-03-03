@@ -46,7 +46,7 @@ typedef struct queue
 
 void Queue_init(Queue*);
 
-void Queue_append(const QueueItem*,Queue*);
+int Queue_append(const QueueItem*,Queue*);
 
 void Queue_serve(QueueItem*,Queue*);
 
