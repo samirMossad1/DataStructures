@@ -37,23 +37,34 @@ int Queue_append(const QueueItem* ptr_item,Queue* ptr_queue)
 	if(ptr_queue != NULL && ptr_item != NULL)
 	{
 
-	if(ptr_queue->size == MAX_QUEUE)
-	{
-		return 0;
-	}
-	else
-	{
+		if(ptr_queue->size == MAX_QUEUE)
+		{
+			return 0;
+		}
+		else
+		{
 
-		ptr_queue->rear=(ptr_queue->rear +1) % MAX_QUEUE;
-		ptr_queue->item[(ptr_queue->rear)]=*ptr_item;
-		ptr_queue->size++;
-	}
+			ptr_queue->rear=(ptr_queue->rear +1) % MAX_QUEUE;
+			ptr_queue->item[(ptr_queue->rear)]=*ptr_item;
+			ptr_queue->size++;
+		}
 
 	}
-		return 1;
+	return 1;
 }
 
+void Queue_serve(QueueItem* ptr_item, Queue* ptr_queue)
+{
 
+	if(ptr_queue != NULL  && ptr_item != NULL)
+	{
+
+		*ptr_item=ptr_queue->item[ptr_queue->front];
+		ptr_queue->front=(ptr_queue->front +1) % MAX_QUEUE;
+		ptr_queue->size--;
+
+	}
+}
 
 
 
@@ -78,18 +89,23 @@ void Queue_retrieveFirst(QueueItem* ptr_item,const Queue* ptr_queue)
 	if(ptr_queue != NULL  && ptr_item != NULL)
 	{
 
-	*ptr_item=ptr_queue->item[ptr_queue->front];
+		*ptr_item=ptr_queue->item[ptr_queue->front];
 
 	}
 }
 
 
-void Queue_traverse(const Queue* ptr_queue , void (*ptr)(QueueItem*))
+void Queue_traverse(const Queue* ptr_queue , void (*ptr)(const QueueItem*))
 {
 	if( ptr_queue != NULL)
 	{
+		int i,position;
 
-
+		for(i=0,position=ptr_queue->front;i<ptr_queue->size;i++)
+		{
+			(*ptr)( & (ptr_queue->item[position]) );
+			position=((position)+1) % MAX_QUEUE;
+		}
 
 
 	}
