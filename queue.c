@@ -10,18 +10,28 @@
 
 
 
-void Queue_append(Queue* ptr_queue)
+int Queue_append(const QueueItem* ptr_item,Queue* ptr_queue)
 {
 
 
-	if(ptr_queue != NULL)
+
+	if(ptr_queue != NULL && ptr_item != NULL)
 	{
 
-		ptr_queue->front=0;
-		ptr_queue->rear=-1;
-		ptr_queue->size=0;
+	if(ptr_queue->size == MAX_QUEUE)
+	{
+		return 0;
+	}
+	else
+	{
+
+		ptr_queue->rear=(ptr_queue->rear +1) % MAX_QUEUE;
+		ptr_queue->item[(ptr_queue->rear)]=*ptr_item;
+		ptr_queue->size++;
 	}
 
+	}
+		return 1;
 }
 
 
