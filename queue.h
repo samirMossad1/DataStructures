@@ -52,7 +52,7 @@ void Queue_serve(QueueItem*,Queue*);
 
 void Queue_retrieveFirst(QueueItem*,const Queue*);
 
-void Queue_traverse(const Queue* , void (*ptr)(QueueItem*));
+void Queue_traverse(const Queue* , void (*ptr)(const QueueItem*));
 
 void Queue_Clear(Queue*);
 
