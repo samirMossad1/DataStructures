@@ -35,6 +35,7 @@ typedef struct queue
 {
   int front;
   int rear;
+  int size;
   QueueItem item[MAX_QUEUE];
 
 }Queue;
@@ -49,7 +50,7 @@ void Queue_append(const QueueItem*,Queue*);
 
 void Queue_serve(QueueItem*,Queue*);
 
-void Queue_serveFirst(QueueItem*,const Queue*);
+void Queue_retrieveFirst(QueueItem*,const Queue*);
 
 void Queue_traverse(const Queue* , void (*ptr)(QueueItem*));
 
