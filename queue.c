@@ -9,6 +9,25 @@
 #include "queue.h"
 
 
+void Queue_init(Queue* ptr_queue)
+{
+
+	if(ptr_queue != NULL)
+	{
+
+		ptr_queue->front=0;
+		ptr_queue->rear=-1;
+		ptr_queue->size=0;
+
+
+
+	}
+
+
+
+
+}
+
 
 int Queue_append(const QueueItem* ptr_item,Queue* ptr_queue)
 {
@@ -33,6 +52,9 @@ int Queue_append(const QueueItem* ptr_item,Queue* ptr_queue)
 	}
 		return 1;
 }
+
+
+
 
 
 
